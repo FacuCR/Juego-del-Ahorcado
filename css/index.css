@@ -1,0 +1,41 @@
+main h1 {
+  text-align: center;
+  color: #121711;
+  background: url(../img/animated-text-fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aitf 80s linear infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+@keyframes aitf {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+main .buttons {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 90%;
+  margin: auto;
+}
+main .buttons > * {
+  margin-bottom: 1rem;
+  margin-inline: auto;
+}
+
+main .buttons > *:last-child {
+  margin-bottom: 0;
+}
+
+.btn-primary {
+  border-radius: 1.2rem;
+  width: 18rem;
+  height: 5rem;
+}
