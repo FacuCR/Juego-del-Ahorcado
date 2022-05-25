@@ -7,10 +7,15 @@ body {
   height: 100vh;
   display: flex;
   flex-flow: column;
+  background-image: url("../img/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
 }
 
 main h1 {
   text-align: center;
+  color: #121711;
 }
 main .buttons {
   display: flex;
@@ -25,26 +30,25 @@ main .buttons > * {
 }
 
 /**** BUTTONS ****/
-button {
+a {
   width: 15rem;
   border-radius: 1.5rem;
   padding: 1.5rem;
-  border: 0.0625rem solid #0a3871;
+  border: 0.0625rem solid #cacf7b;
   height: 4.1875rem;
   font-weight: 900;
   text-align: center;
-  line-height: 1.125rem;
 }
 .btn-primary {
-  color: white;
-  background: #0a3871;
+  color: #cacf7b;
+  background: #121711;
   border-radius: 1.2rem;
   width: 18rem;
   height: 5rem;
 }
 .btn-secondary {
-  color: #0a3871;
-  background: #f3f5fc;
+  color: #121711;
+  background: #cacf7b;
 }
 
 
