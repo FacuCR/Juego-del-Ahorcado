@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Mystery Quest', cursive;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+main h1 {
+  text-align: center;
+}
+main .buttons {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 90%;
+  margin: auto;
+}
+main .buttons > * {
+  margin-bottom: 1rem;
+  margin-inline: auto;
+}
+
+/**** BUTTONS ****/
+button {
+  width: 15rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  border: 0.0625rem solid #0a3871;
+  height: 4.1875rem;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.125rem;
+}
+.btn-primary {
+  color: white;
+  background: #0a3871;
+  border-radius: 1.2rem;
+  width: 18rem;
+  height: 5rem;
+}
+.btn-secondary {
+  color: #0a3871;
+  background: #f3f5fc;
+}
+
+
+/**** LOGO ****/
+header .logo {
+  margin: 1rem;
+}
+
+/**** TABLET ****/
+@media (min-width: 600px) {
+  
+}
+
+/**** DESKTOP ****/
+
+@media (min-width: 1200px) {
+  
+}
