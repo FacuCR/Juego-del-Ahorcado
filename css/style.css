@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: 'Mystery Quest', cursive;
+  font-family: "Mystery Quest", cursive;
 }
 
 body {
@@ -10,13 +10,29 @@ body {
   background-image: url("../img/bg.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center; 
+  background-position: center;
 }
 
 main h1 {
   text-align: center;
   color: #121711;
+  background: url(../img/animated-text-fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aitf 80s linear infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
+@keyframes aitf {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 main .buttons {
   display: flex;
   flex-flow: column;
@@ -38,6 +54,14 @@ a {
   height: 4.1875rem;
   font-weight: 900;
   text-align: center;
+  text-decoration: none;
+  transition: transform ease 0.3s;
+}
+a:hover {
+  transform: scale(1.03);
+}
+a:active {
+  transform: scale(0.98);
 }
 .btn-primary {
   color: #cacf7b;
@@ -51,7 +75,6 @@ a {
   background: #cacf7b;
 }
 
-
 /**** LOGO ****/
 header .logo {
   margin: 1rem;
@@ -59,11 +82,9 @@ header .logo {
 
 /**** TABLET ****/
 @media (min-width: 600px) {
-  
 }
 
 /**** DESKTOP ****/
 
 @media (min-width: 1200px) {
-  
 }
