@@ -20,9 +20,9 @@
     <main>
       <canvas id="ahorcado" width="250" height="350"> </canvas>
       <section class="words">
-        <div class="secret-word"></div>
+        <p class="secret-word"></p>
         <div class="bad-words"></div>
-        <div class="input-word"></div>
+        <input class="input-word" type="text" maxlength="1" onkeypress="return /[A-Z]/i.test(event.key)">
       </section>
       <section class="buttons">
         <a href="#" class="btn-primary">Nuevo juego</a>

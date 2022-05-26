@@ -33,3 +33,24 @@ main .buttons > * {
 main .buttons > *:last-child {
   margin-bottom: 0;
 }
+
+.words {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.words .secret-word {
+  color: #a62f01;
+  font-size: 5rem;
+  margin: 0;
+}
+
+.words .input-word {
+  margin: auto;
+  text-transform: uppercase;
+  border-radius: 20px;
+  width: 30px;
+  height: 40px;
+  padding-left: 10px;
+}
