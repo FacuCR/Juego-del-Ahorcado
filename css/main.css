@@ -43,7 +43,13 @@ a:active {
 }
 
 /**** LOGO ****/
-header .logo {
+header {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content:space-between;
+}
+header .logo, header .audio {
   margin: 1rem;
 }
 

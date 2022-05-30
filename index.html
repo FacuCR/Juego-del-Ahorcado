@@ -12,10 +12,13 @@
       href="https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <header>
       <img class="logo" src="./img/logo.svg" />
+      <i class='fa-solid audio fa-volume-xmark' onclick="togglePlay()"></i></span>
+    </div>
     </header>
     <main>
       <h1>Guard of Democracy</h1>
@@ -24,10 +27,16 @@
         <a href="#" class="btn-secondary">Agregar nueva palabra</a>
         <div class="instructions">
           <img src="./img/warning.svg" />
-          <p>Van a ahorcar un inocente, descubre la palabra correcta y salvalo!</p>
+          <p>
+            Van a ahorcar a un inocente, descubre la palabra correcta y salvalo!
+          </p>
         </div>
       </section>
     </main>
+    <audio loop id="my-audio">
+      <source src="./audio/audio1.mp3" />
+    </audio>
+    <script src="./js/music.js"></script>
     <footer></footer>
   </body>
 </html>

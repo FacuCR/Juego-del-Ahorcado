@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <section class="game-over">
@@ -21,13 +22,14 @@
         <a href="../index.html" class="btn-secondary">Rendirse</a>
       </div>
       <div class="you-win">
-        <p class="win-text">Felicidades lo lograste salvaste al inocente!!</p>
+        <p class="win-text">Felicidades lo lograste, salvaste al inocente!!</p>
         <a href="./ahorcado.html" class="btn-primary">Salvar otro</a>
         <a href="../index.html" class="btn-secondary">Volver al menu</a>
       </div>
     </section>
     <header>
       <img class="logo" src="../img/logo.svg" />
+      <i class='fa-solid audio fa-volume-xmark' onclick="togglePlay()"></i></span>
     </header>
     <main>
       <canvas id="ahorcado" width="250" height="350"> </canvas>
@@ -50,7 +52,11 @@
         <a href="../index.html" class="btn-secondary">Rendirse</a>
       </section>
     </main>
+    <audio loop id="my-audio">
+      <source src="../audio/audio2.mp3" />
+    </audio>
     <footer></footer>
     <script src="../js/ahorcado.js"></script>
+    <script src="../js/music.js"></script>
   </body>
 </html>
