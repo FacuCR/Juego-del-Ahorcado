@@ -129,6 +129,10 @@ function rightArmDrawing(x, y, color, canvasContext) {
 }
 
 function errorDrawing(num) {
+  canvas.classList.remove("shake");
+  window.setTimeout(function () {
+    canvas.classList.add("shake");
+  }, 50);
   let ctx = canvas.getContext("2d");
   switch (num) {
     case 0:
