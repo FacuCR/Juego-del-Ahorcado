@@ -25,3 +25,10 @@ El desafío consiste en construir una página web que contenga el juego del ahor
 - Las letras equivocadas deben aparecer en la pantalla, pero no pueden aparecer de forma repetida;
 - Las letras correctas deben aparecer en la pantalla encima de los guiones, en la posición correcta em relación a la palabra.
 - (EXTRA) La página debe tener un campo para inserción de texto con la finalidad de adicionar nuevas palabras al juego, e un botón "Agregar palabra".
+
+-----
+## :notes: Musica:
+https://www.free-stock-music.com/alexander-nakarada-forest-walk.html y
+https://www.free-stock-music.com/war-and-peace.html
+
+Sonidos de http://soundfxnow.com, y http://www.soundjay.com
