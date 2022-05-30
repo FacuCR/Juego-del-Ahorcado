@@ -29,14 +29,12 @@ main .buttons > * {
   margin-bottom: 1rem;
   margin-inline: auto;
 }
-main .buttons > *:last-child {
-  margin-bottom: 0;
-}
 
 .words {
   display: flex;
   flex-flow: column;
   justify-content: center;
+  align-items: center;
 }
 .words .secret-word {
   color: #a62f01;
@@ -153,5 +151,16 @@ main .buttons > *:last-child {
   }
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+/**** DESKTOP ****/
+
+@media (min-width: 1200px) {
+  main .buttons {
+    flex-flow: row;
+  }
+  main .buttons > a:first-child {
+    margin-right: 1rem;
   }
 }

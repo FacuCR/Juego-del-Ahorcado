@@ -1,21 +1,19 @@
 let arraySecretWords = [
-  "ARGENTINA",
   "SECRETA",
-  "PARACAIDAS",
-  "JAVASCRIPT",
   "BOCA",
   "NOCHE",
   "HOGAR",
   "HORCA",
   "INOCENTE",
-  "CABALLERO",
   "GUERRERO",
   "DAMA",
   "REY",
   "REINA",
-  "MONARQUIA",
-  "INJUSTICIA",
   "LADRON",
+  "MERCADO",
+  "TRONO",
+  "ESPADA",
+  "ESCLAVO",
 ];
 
 let goodSound = new Audio(
@@ -46,7 +44,12 @@ const inputWord = document.querySelector(".input-word");
 const secretWordElement = document.querySelector(".secret-word");
 const badLetters = document.querySelector(".bad-letters");
 
-let chosenWord = randomSelection(arraySecretWords);
+let chosenWord = "";
+if (window.location.search.substring(15).toUpperCase()) {
+  chosenWord = window.location.search.substring(15).toUpperCase();
+} else {
+  chosenWord = randomSelection(arraySecretWords);
+}
 let secretChosenWord = "";
 let errorCont = 0;
 

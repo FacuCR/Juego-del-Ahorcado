@@ -1,0 +1,34 @@
+main {
+  display: flex;
+  flex-flow: column;
+  height: 90%;
+  margin: auto;
+}
+main > * {
+  margin-bottom: 1rem;
+  margin-inline: auto;
+}
+form {
+  display: flex;
+  flex-flow: column;
+}
+form > * {
+  margin-bottom: 1rem;
+}
+
+form button {
+  width: 15rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  border: 0.0625rem solid #cacf7b;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  transition: transform ease 0.3s;
+}
+form button:hover {
+  transform: scale(1.03);
+}
+form button:active {
+  transform: scale(0.98);
+}
