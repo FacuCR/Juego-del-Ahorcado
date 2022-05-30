@@ -1,3 +1,17 @@
+let goodSound = new Audio(
+  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/goodbell.mp3"
+);
+let badSound = new Audio(
+  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/bad.mp3"
+);
+let winSound = new Audio(
+  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/win.mp3"
+);
+let loseSound = new Audio(
+  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/lose.mp3"
+);
+sounds();
+
 let gallowsColor = "black";
 let humanColor = "rgba(0, 0, 200, 0.5)";
 let basePosition = { x: 50, y: 300 };
@@ -131,7 +145,7 @@ function rightArmDrawing(x, y, color, canvasContext) {
 
 function errorDrawing(num) {
   let inputLetter = inputWord.value;
-  letterErrorDrawing(inputLetter);
+  let isPresent = letterErrorDrawing(inputLetter);
 
   canvas.classList.remove("shake");
   window.setTimeout(function () {
@@ -139,42 +153,46 @@ function errorDrawing(num) {
   }, 50);
   let ctx = canvas.getContext("2d");
 
-  switch (num) {
-    case 0:
-      gallowsDrawing(
-        basePosition,
-        columnPosition,
-        supportPosition,
-        ropePosition,
-        gallowsColor,
-        ctx
-      );
-      break;
-    case 1:
-      headDrawing(humanColor, ctx);
-      break;
-    case 2:
-      bodyDrawing(182, 150, humanColor, ctx);
-      break;
-    case 3:
-      leftLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
-      break;
-    case 4:
-      rightLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
-      break;
-    case 5:
-      leftArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
-      break;
-    default:
-      rightArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
-      inputWord.disabled = true;
-      youLoss();
-      break;
+  if (!isPresent) {
+    switch (num) {
+      case 0:
+        gallowsDrawing(
+          basePosition,
+          columnPosition,
+          supportPosition,
+          ropePosition,
+          gallowsColor,
+          ctx
+        );
+        break;
+      case 1:
+        headDrawing(humanColor, ctx);
+        break;
+      case 2:
+        bodyDrawing(182, 150, humanColor, ctx);
+        break;
+      case 3:
+        leftLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
+        break;
+      case 4:
+        rightLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
+        break;
+      case 5:
+        leftArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
+        break;
+      default:
+        rightArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
+        inputWord.disabled = true;
+        youLoss();
+        break;
+    }
+    errorCont++;
   }
 }
 
 function isVictory(word) {
   if (word == testWord) {
+    playSound(winSound);
     inputWord.disabled = true;
     const gameOver = document.querySelector(".game-over");
     const youWin = document.querySelector(".you-win");
@@ -184,6 +202,7 @@ function isVictory(word) {
 }
 
 function youLoss() {
+  playSound(loseSound);
   const gameOver = document.querySelector(".game-over");
   const youLoss = document.querySelector(".you-loss");
   gameOver.style.visibility = "visible";
@@ -204,6 +223,11 @@ function checkLetter() {
     if (testWord[i] == inputLetter) {
       newSecretWord += inputLetter;
       isCorrect = true;
+      playSound(goodSound);
+      secretWordElement.classList.remove("letter-anim");
+      window.setTimeout(function () {
+        secretWordElement.classList.add("letter-anim");
+      }, 50);
     } else if (secretTestWord[i] != "-") {
       newSecretWord += secretTestWord[i];
     } else {
@@ -212,13 +236,13 @@ function checkLetter() {
   }
   if (!isCorrect) {
     errorDrawing(errorCont);
-    errorCont++;
   }
 
   return newSecretWord;
 }
 
 function letterErrorDrawing(letter) {
+  playSound(badSound);
   let isPresent = false;
   let letterInUppCase = letter.toUpperCase();
   let actualBadLetters = document.querySelectorAll(".bad-letter");
@@ -235,4 +259,22 @@ function letterErrorDrawing(letter) {
     badLetterElement.classList.add("bad-letter");
     badLetters.append(badLetterElement);
   }
+
+  return isPresent;
+}
+
+function sounds() {
+  badSound.volume = 0.4;
+  goodSound.volume = 0.4;
+  winSound.volume = 0.8;
+  loseSound.volume = 0.4;
+}
+
+function playSound(sound) {
+  this.stopSound(sound);
+  sound.play();
+}
+function stopSound(sound) {
+  sound.pause();
+  sound.currentTime = 0;
 }

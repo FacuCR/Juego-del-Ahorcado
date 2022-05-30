@@ -96,13 +96,27 @@ main .buttons > *:last-child {
 }
 
 .bad-letters .bad-letter {
-  color: red;
-  letter-spacing: 0.8rem;
-  text-shadow: .0625rem 0 0 #323232;
+  background: #ff4d4d;
+  text-shadow: 1px 2px 0 red;
+  padding: 10px;
+  color: white;
+  text-transform: uppercase;
+  margin-right: 10px;
+  animation: letteranim 0.3s ease;
+}
+
+.letter-anim {
+  animation: letteranim 0.3s ease;
 }
 
 .shake {
-  animation: shake 1s;
+  animation: shake 1s ease;
+}
+
+@keyframes letteranim {
+  50% {
+    transform: translateY(-5px) scale(1.05);
+  }
 }
 
 @keyframes shake {
