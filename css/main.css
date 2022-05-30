@@ -52,6 +52,8 @@ header {
 header .logo,
 header .audio {
   margin: 1rem;
+  color: #121711;
+  font-size: 3rem;
 }
 
 /**** INSTRUCTIONS ****/
