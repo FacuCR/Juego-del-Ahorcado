@@ -90,6 +90,17 @@ main .buttons > *:last-child {
   color: green;
 }
 
+.bad-letters {
+  display: flex;
+  flex-flow: row;
+}
+
+.bad-letters .bad-letter {
+  color: red;
+  letter-spacing: 0.8rem;
+  text-shadow: .0625rem 0 0 #323232;
+}
+
 .shake {
   animation: shake 1s;
 }

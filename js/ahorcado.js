@@ -9,7 +9,8 @@ let armsPosition = { x: 185, y: 170 };
 let canvas = document.getElementById("ahorcado");
 
 const inputWord = document.querySelector(".input-word");
-let secretWordElement = document.querySelector(".secret-word");
+const secretWordElement = document.querySelector(".secret-word");
+const badLetters = document.querySelector(".bad-letters");
 
 let testWord = "SECRETA";
 let secretTestWord = "";
@@ -129,11 +130,15 @@ function rightArmDrawing(x, y, color, canvasContext) {
 }
 
 function errorDrawing(num) {
+  let inputLetter = inputWord.value;
+  letterErrorDrawing(inputLetter);
+
   canvas.classList.remove("shake");
   window.setTimeout(function () {
     canvas.classList.add("shake");
   }, 50);
   let ctx = canvas.getContext("2d");
+
   switch (num) {
     case 0:
       gallowsDrawing(
@@ -211,4 +216,23 @@ function checkLetter() {
   }
 
   return newSecretWord;
+}
+
+function letterErrorDrawing(letter) {
+  let isPresent = false;
+  let letterInUppCase = letter.toUpperCase();
+  let actualBadLetters = document.querySelectorAll(".bad-letter");
+  for (let i = 0; i < actualBadLetters.length; i++) {
+    if (actualBadLetters[i].textContent == letterInUppCase) {
+      isPresent = true;
+      break;
+    }
+  }
+  if (!isPresent) {
+    const badLetter = document.createTextNode(letterInUppCase);
+    const badLetterElement = document.createElement("p");
+    badLetterElement.append(badLetter);
+    badLetterElement.classList.add("bad-letter");
+    badLetters.append(badLetterElement);
+  }
 }
