@@ -14,6 +14,18 @@
     />
   </head>
   <body>
+    <section class="game-over">
+      <div class="you-loss">
+        <strong class="loss-text">No salvaste al inocente, intentalo de nuevo</strong>
+        <a href="./ahorcado.html" class="btn-primary">Intentar de nuevo</a>
+        <a href="../index.html" class="btn-secondary">Rendirse</a>
+      </div>
+      <div class="you-win">
+        <p class="win-text">Felicidades lo lograste salvaste al inocente!!</p>
+        <a href="./ahorcado.html" class="btn-primary">Salvar otro</a>
+        <a href="../index.html" class="btn-secondary">Volver al menu</a>
+      </div>
+    </section>
     <header>
       <img class="logo" src="../img/logo.svg" />
     </header>
@@ -22,10 +34,19 @@
       <section class="words">
         <p class="secret-word"></p>
         <div class="bad-words"></div>
-        <input class="input-word" type="text" maxlength="1" onkeypress="return /[A-Z]/i.test(event.key)">
+        <input
+          class="input-word"
+          type="text"
+          maxlength="1"
+          onkeypress="return /[A-Z]/i.test(event.key)"
+        />
+        <div class="instructions">
+          <img src="../img/warning.svg" />
+          <p>Ingresa una letra y presiona enter</p>
+        </div>
       </section>
       <section class="buttons">
-        <a href="#" class="btn-primary">Nuevo juego</a>
+        <a href="./ahorcado.html" class="btn-primary">Nuevo juego</a>
         <a href="../index.html" class="btn-secondary">Rendirse</a>
       </section>
     </main>

@@ -6,12 +6,14 @@ let supportPosition = { x: 100, y: 50 };
 let ropePosition = { x: 180, y: 50 };
 let legsPosition = { x: 185, y: 250 };
 let armsPosition = { x: 185, y: 170 };
+let canvas = document.getElementById("ahorcado");
 
 const inputWord = document.querySelector(".input-word");
 let secretWordElement = document.querySelector(".secret-word");
 
 let testWord = "SECRETA";
 let secretTestWord = "";
+let errorCont = 0;
 
 for (let i = 0; i < testWord.length; i++) {
   secretTestWord += "-";
@@ -23,27 +25,9 @@ inputWord.addEventListener("keypress", (event) => {
     let newSecretWord = checkLetter();
     modifySecretWord(newSecretWord);
     secretTestWord = newSecretWord;
+    isVictory(secretTestWord);
   }
 });
-
-let canvas = document.getElementById("ahorcado");
-if (canvas.getContext) {
-  let ctx = canvas.getContext("2d");
-  gallowsDrawing(
-    basePosition,
-    columnPosition,
-    supportPosition,
-    ropePosition,
-    gallowsColor,
-    ctx
-  );
-  headDrawing(humanColor, ctx);
-  bodyDrawing(182, 150, humanColor, ctx);
-  leftLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
-  rightLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
-  leftArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
-  rightArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
-}
 
 function baseDrawing(x, y, color, canvasContext) {
   canvasContext.fillStyle = color;
@@ -144,6 +128,59 @@ function rightArmDrawing(x, y, color, canvasContext) {
   canvasContext.stroke();
 }
 
+function errorDrawing(num) {
+  let ctx = canvas.getContext("2d");
+  switch (num) {
+    case 0:
+      gallowsDrawing(
+        basePosition,
+        columnPosition,
+        supportPosition,
+        ropePosition,
+        gallowsColor,
+        ctx
+      );
+      break;
+    case 1:
+      headDrawing(humanColor, ctx);
+      break;
+    case 2:
+      bodyDrawing(182, 150, humanColor, ctx);
+      break;
+    case 3:
+      leftLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
+      break;
+    case 4:
+      rightLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
+      break;
+    case 5:
+      leftArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
+      break;
+    default:
+      rightArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
+      inputWord.disabled = true;
+      youLoss();
+      break;
+  }
+}
+
+function isVictory(word) {
+  if (word == testWord) {
+    inputWord.disabled = true;
+    const gameOver = document.querySelector(".game-over");
+    const youWin = document.querySelector(".you-win");
+    gameOver.style.visibility = "visible";
+    youWin.style.display = "flex";
+  }
+}
+
+function youLoss() {
+  const gameOver = document.querySelector(".game-over");
+  const youLoss = document.querySelector(".you-loss");
+  gameOver.style.visibility = "visible";
+  youLoss.style.display = "flex";
+}
+
 function modifySecretWord(word) {
   secretWordElement.innerHTML = "";
   let textP = document.createTextNode(word);
@@ -153,14 +190,21 @@ function modifySecretWord(word) {
 function checkLetter() {
   let inputLetter = inputWord.value.toUpperCase();
   let newSecretWord = "";
+  let isCorrect = false;
   for (let i = 0; i < testWord.length; i++) {
     if (testWord[i] == inputLetter) {
       newSecretWord += inputLetter;
+      isCorrect = true;
     } else if (secretTestWord[i] != "-") {
       newSecretWord += secretTestWord[i];
     } else {
       newSecretWord += "-";
     }
   }
+  if (!isCorrect) {
+    errorDrawing(errorCont);
+    errorCont++;
+  }
+
   return newSecretWord;
 }

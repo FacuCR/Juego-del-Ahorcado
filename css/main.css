@@ -47,6 +47,25 @@ header .logo {
   margin: 1rem;
 }
 
+/**** INSTRUCTIONS ****/
+.instructions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 0.5rem;
+}
+.instructions p {
+  color: #d8a122;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
+  text-shadow: .0625rem 0 0 #323232;
+}
+.instructions img{
+  filter: invert(86%) sepia(91%) saturate(836%) hue-rotate(342deg) brightness(92%) contrast(85%);
+}
+
 /**** TABLET ****/
 @media (min-width: 600px) {
 }
