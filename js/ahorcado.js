@@ -1,3 +1,23 @@
+let arraySecretWords = [
+  "ARGENTINA",
+  "SECRETA",
+  "PARACAIDAS",
+  "JAVASCRIPT",
+  "BOCA",
+  "NOCHE",
+  "HOGAR",
+  "HORCA",
+  "INOCENTE",
+  "CABALLERO",
+  "GUERRERO",
+  "DAMA",
+  "REY",
+  "REINA",
+  "MONARQUIA",
+  "INJUSTICIA",
+  "LADRON",
+];
+
 let goodSound = new Audio(
   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/goodbell.mp3"
 );
@@ -26,23 +46,27 @@ const inputWord = document.querySelector(".input-word");
 const secretWordElement = document.querySelector(".secret-word");
 const badLetters = document.querySelector(".bad-letters");
 
-let testWord = "SECRETA";
-let secretTestWord = "";
+let chosenWord = randomSelection(arraySecretWords);
+let secretChosenWord = "";
 let errorCont = 0;
 
-for (let i = 0; i < testWord.length; i++) {
-  secretTestWord += "-";
+for (let i = 0; i < chosenWord.length; i++) {
+  secretChosenWord += "-";
 }
-modifySecretWord(secretTestWord);
+modifySecretWord(secretChosenWord);
 
 inputWord.addEventListener("keypress", (event) => {
   if (event.key == "Enter") {
     let newSecretWord = checkLetter();
     modifySecretWord(newSecretWord);
-    secretTestWord = newSecretWord;
-    isVictory(secretTestWord);
+    secretChosenWord = newSecretWord;
+    isVictory(secretChosenWord);
   }
 });
+
+function randomSelection(arrayStrings) {
+  return arrayStrings[Math.floor(Math.random() * arrayStrings.length)];
+}
 
 function baseDrawing(x, y, color, canvasContext) {
   canvasContext.fillStyle = color;
@@ -191,7 +215,7 @@ function errorDrawing(num) {
 }
 
 function isVictory(word) {
-  if (word == testWord) {
+  if (word == chosenWord) {
     playSound(winSound);
     inputWord.disabled = true;
     const gameOver = document.querySelector(".game-over");
@@ -205,6 +229,8 @@ function youLoss() {
   playSound(loseSound);
   const gameOver = document.querySelector(".game-over");
   const youLoss = document.querySelector(".you-loss");
+  const lossText = document.querySelector(".loss-text");
+  lossText.innerHTML += "<br> la palabra era: " + chosenWord;
   gameOver.style.visibility = "visible";
   youLoss.style.display = "flex";
 }
@@ -219,8 +245,8 @@ function checkLetter() {
   let inputLetter = inputWord.value.toUpperCase();
   let newSecretWord = "";
   let isCorrect = false;
-  for (let i = 0; i < testWord.length; i++) {
-    if (testWord[i] == inputLetter) {
+  for (let i = 0; i < chosenWord.length; i++) {
+    if (chosenWord[i] == inputLetter) {
       newSecretWord += inputLetter;
       isCorrect = true;
       playSound(goodSound);
@@ -228,8 +254,8 @@ function checkLetter() {
       window.setTimeout(function () {
         secretWordElement.classList.add("letter-anim");
       }, 50);
-    } else if (secretTestWord[i] != "-") {
-      newSecretWord += secretTestWord[i];
+    } else if (secretChosenWord[i] != "-") {
+      newSecretWord += secretChosenWord[i];
     } else {
       newSecretWord += "-";
     }

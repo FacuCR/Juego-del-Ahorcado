@@ -47,9 +47,10 @@ header {
   display: flex;
   flex-flow: row;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-header .logo, header .audio {
+header .logo,
+header .audio {
   margin: 1rem;
 }
 
@@ -66,10 +67,21 @@ header .logo, header .audio {
   font-weight: 400;
   font-size: 1rem;
   line-height: 150%;
-  text-shadow: .0625rem 0 0 #323232;
+  text-shadow: 0.0625rem 0 0 #323232;
 }
-.instructions img{
-  filter: invert(86%) sepia(91%) saturate(836%) hue-rotate(342deg) brightness(92%) contrast(85%);
+.instructions img {
+  filter: invert(86%) sepia(91%) saturate(836%) hue-rotate(342deg)
+    brightness(92%) contrast(85%);
+}
+
+/**** COPYRIGHT ****/
+footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+.copyright-text {
+  text-shadow: 0.0625rem 0 0 white;
 }
 
 /**** TABLET ****/
