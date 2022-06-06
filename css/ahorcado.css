@@ -92,7 +92,6 @@ main .buttons > * {
   display: flex;
   flex-flow: row;
 }
-
 .bad-letters .bad-letter {
   background: #ff4d4d;
   text-shadow: 1px 2px 0 red;
@@ -101,6 +100,9 @@ main .buttons > * {
   text-transform: uppercase;
   margin-right: 10px;
   animation: letteranim 0.3s ease;
+}
+.bad-letters .bad-letter:first-child {
+  visibility: hidden;
 }
 
 .letter-anim {
