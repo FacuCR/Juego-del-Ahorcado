@@ -59,12 +59,13 @@ for (let i = 0; i < chosenWord.length; i++) {
 modifySecretWord(secretChosenWord);
 
 inputWord.addEventListener("keypress", (event) => {
-  if (event.key == "Enter") {
+  if (event.key == "Enter" && inputWord.value !== "") {
     let newSecretWord = checkLetter();
     modifySecretWord(newSecretWord);
     secretChosenWord = newSecretWord;
     isVictory(secretChosenWord);
   }
+  inputWord.value = '';
 });
 
 function randomSelection(arrayStrings) {
@@ -91,21 +92,12 @@ function ropeDrawing(x, y, color, canvasContext) {
   canvasContext.fillRect(x, y, 10, 40);
 }
 
-function gallowsDrawing(
-  basePosition,
-  columnPosition,
+function gallowsSupportDrawing(
   supportPosition,
   ropePosition,
   gallowsColor,
   canvasContext
 ) {
-  baseDrawing(basePosition.x, basePosition.y, gallowsColor, canvasContext);
-  columnDrawing(
-    columnPosition.x,
-    columnPosition.y,
-    gallowsColor,
-    canvasContext
-  );
   supportDrawing(
     supportPosition.x,
     supportPosition.y,
@@ -183,28 +175,37 @@ function errorDrawing(num) {
   if (!isPresent) {
     switch (num) {
       case 0:
-        gallowsDrawing(
-          basePosition,
-          columnPosition,
-          supportPosition,
-          ropePosition,
+        baseDrawing(
+          basePosition.x,
+          basePosition.y,
           gallowsColor,
           ctx
         );
         break;
       case 1:
-        headDrawing(humanColor, ctx);
+        columnDrawing(
+          columnPosition.x,
+          columnPosition.y,
+          gallowsColor,
+          ctx
+        );
         break;
       case 2:
-        bodyDrawing(182, 150, humanColor, ctx);
+        gallowsSupportDrawing(supportPosition, ropePosition, gallowsColor, ctx);
         break;
       case 3:
-        leftLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
+        headDrawing(humanColor, ctx);
         break;
       case 4:
-        rightLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
+        bodyDrawing(182, 150, humanColor, ctx);
         break;
       case 5:
+        leftLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
+        break;
+      case 6:
+        rightLegDrawing(legsPosition.x, legsPosition.y, humanColor, ctx);
+        break;
+      case 7:
         leftArmDrawing(armsPosition.x, armsPosition.y, humanColor, ctx);
         break;
       default:
