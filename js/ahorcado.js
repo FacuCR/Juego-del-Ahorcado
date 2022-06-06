@@ -14,6 +14,20 @@ let arraySecretWords = [
   "TRONO",
   "ESPADA",
   "ESCLAVO",
+  "DEFENDER",
+  "ARMADURA",
+  "DUELO",
+  "EXILIO",
+  "GUERRA",
+  "NOBLE",
+  "BUFON",
+  "ESPIA",
+  "TRAICION",
+  "VELAS",
+  "CAPITAL",
+  "VESTIDO",
+  "GRANJA",
+  "CRUZ",
 ];
 
 let goodSound = new Audio(
@@ -65,7 +79,7 @@ inputWord.addEventListener("keypress", (event) => {
     secretChosenWord = newSecretWord;
     isVictory(secretChosenWord);
   }
-  inputWord.value = '';
+  inputWord.value = "";
 });
 
 function randomSelection(arrayStrings) {
@@ -175,20 +189,10 @@ function errorDrawing(num) {
   if (!isPresent) {
     switch (num) {
       case 0:
-        baseDrawing(
-          basePosition.x,
-          basePosition.y,
-          gallowsColor,
-          ctx
-        );
+        baseDrawing(basePosition.x, basePosition.y, gallowsColor, ctx);
         break;
       case 1:
-        columnDrawing(
-          columnPosition.x,
-          columnPosition.y,
-          gallowsColor,
-          ctx
-        );
+        columnDrawing(columnPosition.x, columnPosition.y, gallowsColor, ctx);
         break;
       case 2:
         gallowsSupportDrawing(supportPosition, ropePosition, gallowsColor, ctx);
